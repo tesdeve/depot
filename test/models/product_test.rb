@@ -60,6 +60,7 @@ class ProductTest < ActiveSupport::TestCase
     product = Product.new(title: products(:one).title, description: 'Good Book',
                                image_url:  '7apps.jpg', price: 1) 
     assert product.invalid?
+    assert_equal ['must be unique'], product.errors[:title] #Unsure it is running/showing/comparing this meesage
 
     #assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end 
