@@ -18,7 +18,7 @@ class ProductTest < ActiveSupport::TestCase
   test 'product price must be positive' do 
     product = Product.new(title: 'Book to be Added 10 Chars',
                           description: 'Good Book',
-                          image_url:  'book.jpg')
+                          image_url:  '7apps.jpg')
 
     product.price = -1
     assert product.invalid?
@@ -58,8 +58,9 @@ class ProductTest < ActiveSupport::TestCase
 
   test 'title must be unique' do 
     product = Product.new(title: products(:one).title, description: 'Good Book',
-                               image_url:  'book.jpg', price: 1) 
+                               image_url:  '7apps.jpg', price: 1) 
     assert product.invalid?
+    assert_equal ['must be unique'], product.errors[:title] #Unsure it is running/showing/comparing this meesage
 
     #assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end 
@@ -67,7 +68,7 @@ class ProductTest < ActiveSupport::TestCase
   test 'title must be at least ten characters' do 
     product = Product.new(title: "the bor",
                           description: 'Good Borok',
-                          image_url:  'book.jpg', 
+                          image_url:  '7apps.jpg', 
                           price: 10)
 
     assert product.invalid? 
