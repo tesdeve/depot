@@ -16,11 +16,19 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create line_item" do
+    #assert_difference('LineItem.count', 1) => It seems the default is (1). 
+                                            # So it doesn't matter if the number 1 is added or not
     assert_difference('LineItem.count') do
-      post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
+      #post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
+      post line_items_url, params: { product_id: products(:ruby).id} 
     end
 
-    assert_redirected_to line_item_url(LineItem.last)
+    follow_redirect!
+
+    assert_select 'h2', 'Your Pragmatic Cart'
+    assert_select 'li', 'Programming Ruby 1.9'
+
+    #assert_redirected_to line_item_url(LineItem.last)
   end
 
   test "should show line_item" do

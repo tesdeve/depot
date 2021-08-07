@@ -26,6 +26,38 @@
       .price {
         font-size: 1.414em;
       }
+      form, div {
+       display: inline;
+      }
+      input[type="submit"] {
+      background-color: #282;
+      border-radius: 0.354em;
+      border: solid thin #141;
+      color: white;
+      font-size: 1em;
+      padding: 0.354em 1em;
+      }
+      input[type="submit"]:hover {
+       background-color: #141;
+      }
     }
   }
+
+  .row:after {
+    content: "";
+    //display: table;
+    //clear: both;
+  }
+
+  .session_counter_text {
+    float: left;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /*.column2 {
+    float: left;
+    width: 50%;
+    padding-top: 10px;
+    //height: 300px; /* Should be removed. Only for demonstration   } */
 }
